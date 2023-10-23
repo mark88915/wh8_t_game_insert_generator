@@ -53,11 +53,20 @@
             this.isPtExist = new System.Windows.Forms.RadioButton();
             this.resultBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.isImageExist = new System.Windows.Forms.RadioButton();
             this.GroupBox1.SuspendLayout();
             this.GroupBox2.SuspendLayout();
             this.GroupBox3.SuspendLayout();
             this.GroupBox4.SuspendLayout();
             this.GroupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // fileSelectBtn
@@ -70,7 +79,7 @@
             this.fileSelectBtn.TabIndex = 0;
             this.fileSelectBtn.Text = "Select File";
             this.fileSelectBtn.UseVisualStyleBackColor = true;
-            this.fileSelectBtn.Click += new System.EventHandler(this.button1_Click);
+            this.fileSelectBtn.Click += new System.EventHandler(this.fileSelectBtn_Click);
             // 
             // fileNameLabel
             // 
@@ -187,10 +196,11 @@
             // 
             // GroupBox1
             // 
+            this.GroupBox1.Controls.Add(this.radioButton1);
             this.GroupBox1.Controls.Add(this.isThExist);
             this.GroupBox1.Location = new System.Drawing.Point(37, 456);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(119, 59);
+            this.GroupBox1.Size = new System.Drawing.Size(137, 59);
             this.GroupBox1.TabIndex = 12;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "是否有th";
@@ -208,10 +218,11 @@
             // 
             // GroupBox2
             // 
+            this.GroupBox2.Controls.Add(this.radioButton2);
             this.GroupBox2.Controls.Add(this.isViExist);
             this.GroupBox2.Location = new System.Drawing.Point(226, 456);
             this.GroupBox2.Name = "GroupBox2";
-            this.GroupBox2.Size = new System.Drawing.Size(111, 59);
+            this.GroupBox2.Size = new System.Drawing.Size(137, 59);
             this.GroupBox2.TabIndex = 13;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "是否有vi";
@@ -229,10 +240,11 @@
             // 
             // GroupBox3
             // 
+            this.GroupBox3.Controls.Add(this.radioButton3);
             this.GroupBox3.Controls.Add(this.isIdExist);
             this.GroupBox3.Location = new System.Drawing.Point(37, 531);
             this.GroupBox3.Name = "GroupBox3";
-            this.GroupBox3.Size = new System.Drawing.Size(119, 59);
+            this.GroupBox3.Size = new System.Drawing.Size(137, 59);
             this.GroupBox3.TabIndex = 14;
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "是否有id";
@@ -250,10 +262,11 @@
             // 
             // GroupBox4
             // 
+            this.GroupBox4.Controls.Add(this.radioButton4);
             this.GroupBox4.Controls.Add(this.isEsExist);
             this.GroupBox4.Location = new System.Drawing.Point(226, 531);
             this.GroupBox4.Name = "GroupBox4";
-            this.GroupBox4.Size = new System.Drawing.Size(111, 59);
+            this.GroupBox4.Size = new System.Drawing.Size(137, 59);
             this.GroupBox4.TabIndex = 15;
             this.GroupBox4.TabStop = false;
             this.GroupBox4.Text = "是否有es";
@@ -271,10 +284,11 @@
             // 
             // GroupBox5
             // 
+            this.GroupBox5.Controls.Add(this.radioButton5);
             this.GroupBox5.Controls.Add(this.isPtExist);
             this.GroupBox5.Location = new System.Drawing.Point(37, 607);
             this.GroupBox5.Name = "GroupBox5";
-            this.GroupBox5.Size = new System.Drawing.Size(119, 59);
+            this.GroupBox5.Size = new System.Drawing.Size(137, 59);
             this.GroupBox5.TabIndex = 16;
             this.GroupBox5.TabStop = false;
             this.GroupBox5.Text = "是否有pt";
@@ -303,17 +317,107 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("新細明體", 15F);
+            this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(28, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(870, 25);
             this.label1.TabIndex = 18;
             this.label1.Text = "請將Excel檔案按照Gamecode, cn, hk, en, th, vi, id, es, pt的順序排好，沒有的就放en";
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(73, 24);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(58, 19);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "沒有";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(73, 24);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(58, 19);
+            this.radioButton2.TabIndex = 2;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "沒有";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(73, 24);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(58, 19);
+            this.radioButton3.TabIndex = 19;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "沒有";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(73, 24);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(58, 19);
+            this.radioButton4.TabIndex = 19;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "沒有";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(73, 24);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(58, 19);
+            this.radioButton5.TabIndex = 19;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "沒有";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.radioButton6);
+            this.groupBox6.Controls.Add(this.isImageExist);
+            this.groupBox6.Location = new System.Drawing.Point(226, 607);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(137, 59);
+            this.groupBox6.TabIndex = 20;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "是否有圖片";
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(73, 24);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(58, 19);
+            this.radioButton6.TabIndex = 19;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.Text = "沒有";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // isImageExist
+            // 
+            this.isImageExist.AutoSize = true;
+            this.isImageExist.Location = new System.Drawing.Point(6, 24);
+            this.isImageExist.Name = "isImageExist";
+            this.isImageExist.Size = new System.Drawing.Size(43, 19);
+            this.isImageExist.TabIndex = 0;
+            this.isImageExist.TabStop = true;
+            this.isImageExist.Text = "有";
+            this.isImageExist.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(971, 763);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.resultBox);
             this.Controls.Add(this.GroupBox5);
@@ -347,6 +451,8 @@
             this.GroupBox4.PerformLayout();
             this.GroupBox5.ResumeLayout(false);
             this.GroupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,6 +485,14 @@
         private System.Windows.Forms.RadioButton isPtExist;
         private System.Windows.Forms.TextBox resultBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton isImageExist;
     }
 }
 

@@ -14,3 +14,7 @@ C:\Users\Autumn\Desktop\coding\CSharp\winform\tgame_insert_sql_generator\tgame_i
 C:\Users\Autumn\Desktop\coding\CSharp\winform\tgame_insert_sql_generator\tgame_insert_sql_generator\bin\Debug\System.IO.Packaging.dll
 C:\Users\Autumn\Desktop\coding\CSharp\winform\tgame_insert_sql_generator\tgame_insert_sql_generator\bin\Debug\EPPlus.xml
 C:\Users\Autumn\Desktop\coding\CSharp\winform\tgame_insert_sql_generator\tgame_insert_sql_generator\obj\Debug\tgame_insert_sql_generator.csproj.CopyComplete
+C:\Users\Autumn\Desktop\coding\CSharp\winform\tgame_insert_sql_generator\tgame_insert_sql_generator\bin\Debug\tgame_insert_sql_generator.exe.manifest
+C:\Users\Autumn\Desktop\coding\CSharp\winform\tgame_insert_sql_generator\tgame_insert_sql_generator\bin\Debug\tgame_insert_sql_generator.application
+C:\Users\Autumn\Desktop\coding\CSharp\winform\tgame_insert_sql_generator\tgame_insert_sql_generator\obj\Debug\tgame_insert_sql_generator.exe.manifest
+C:\Users\Autumn\Desktop\coding\CSharp\winform\tgame_insert_sql_generator\tgame_insert_sql_generator\obj\Debug\tgame_insert_sql_generator.application

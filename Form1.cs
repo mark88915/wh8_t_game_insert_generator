@@ -13,7 +13,7 @@ using OfficeOpenXml;
 
 namespace tgame_insert_sql_generator
 {
-    public partial class Form1 : System.Windows.Forms.Form
+    public partial class Form1 : Form
     {
         public Form1()
         {
@@ -27,9 +27,16 @@ namespace tgame_insert_sql_generator
             ofd.FileName = "";
             ofd.Title = "選擇一個Excel檔案";
             resultBox.ScrollBars = ScrollBars.Vertical;
+
+            isThExist.Checked = true;
+            isIdExist.Checked = true;
+            isViExist.Checked = true;
+            isEsExist.Checked = true;
+            isPtExist.Checked = true;
+            isImageExist.Checked = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void fileSelectBtn_Click(object sender, EventArgs e)
         {
             ofd.ShowDialog();
         }
@@ -66,7 +73,8 @@ namespace tgame_insert_sql_generator
                         id = worksheet.Cells[row, 7].Text,
                         es = worksheet.Cells[row, 8].Text,
                         pt = worksheet.Cells[row, 9].Text;
-                    string baseStr = $@"INSERT INTO [dbo].[t_game] ([gametype], [gamekind], [device], [platform], [gamecategory], [gamecode], [reportgamecode], [category], [gamename], [gamename_hk], [gamename_en], [gamename_th], [gamename_vi], [gamename_id], [gamename_es], [gamename_pt], [image], [image_hk], [image_en], [image_th], [image_vi], [image_id], [image_es], [image_pt], [seq], [status], [cdate], [remark], [noRebate], [link], [DataVersion]) VALUES ('{gametype.Text}', '{gamekind.Text}', '{device.Text}', '{platform.Text}', '{gamekind.Text}', '{gamecode}', '{gamecode}', '{gamekind.Text}', N'{cn}', N'{hk}', N'{en}', N'{th}', N'{vi}', N'{id}', N'{es}', N'{pt}', N'{gamecode}_cn.png', N'{gamecode}_hk.png', N'{gamecode}_en.png', N'{gamecode}_{(isThExist.Checked ? "th" : "en")}.png', N'{gamecode}_{(isViExist.Checked ? "vi" : "en")}.png', N'{gamecode}_{(isIdExist.Checked ? "id" : "en")}.png', N'{gamecode}_{(isEsExist.Checked ? "es" : "en")}.png', N'{gamecode}_{(isPtExist.Checked ? "pt" : "en")}.png',";
+                    string imageSQL = $"{(isImageExist.Checked ? $"N'{gamecode}_cn.png', N'{gamecode}_hk.png', N'{gamecode}_en.png', N'{gamecode}_{(isThExist.Checked ? "th" : "en")}.png', N'{gamecode}_{(isViExist.Checked ? "vi" : "en")}.png', N'{gamecode}_{(isIdExist.Checked ? "id" : "en")}.png', N'{gamecode}_{(isEsExist.Checked ? "es" : "en")}.png', N'{gamecode}_{(isPtExist.Checked ? "pt" : "en")}.png'" : "N'', N'', N'', N'', N'', N'', N'', N''")}";
+                    string baseStr = $@"INSERT INTO [dbo].[t_game] ([gametype], [gamekind], [device], [platform], [gamecategory], [gamecode], [reportgamecode], [category], [gamename], [gamename_hk], [gamename_en], [gamename_th], [gamename_vi], [gamename_id], [gamename_es], [gamename_pt], [image], [image_hk], [image_en], [image_th], [image_vi], [image_id], [image_es], [image_pt], [seq], [status], [cdate], [remark], [noRebate], [link], [DataVersion]) VALUES ('{gametype.Text}', '{gamekind.Text}', '{device.Text}', '{platform.Text}', '{gamekind.Text}', '{gamecode}', '{gamecode}', '{gamekind.Text}', N'{cn}', N'{hk}', N'{en}', N'{th}', N'{vi}', N'{id}', N'{es}', N'{pt}', {imageSQL},";
 
                     baseStr += $"{row}, 'Y', GETDATE(), NULL, '0', '', 0);\n";
                     result += baseStr;

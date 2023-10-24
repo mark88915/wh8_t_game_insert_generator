@@ -64,23 +64,36 @@ namespace tgame_insert_sql_generator
                 var worksheet = package.Workbook.Worksheets[0]; // 使用第一個工作表
                 for (int row = 1; row <= worksheet.Dimension.End.Row; row++)
                 {
-                    string gamecode = worksheet.Cells[row, 1].Text, 
-                        cn = worksheet.Cells[row, 2].Text, 
-                        hk = worksheet.Cells[row, 3].Text,
-                        en = worksheet.Cells[row, 4].Text,
-                        th = worksheet.Cells[row, 5].Text,
-                        vi = worksheet.Cells[row, 6].Text,
-                        id = worksheet.Cells[row, 7].Text,
-                        es = worksheet.Cells[row, 8].Text,
-                        pt = worksheet.Cells[row, 9].Text;
-                    string imageSQL = $"{(isImageExist.Checked ? $"N'{gamecode}_cn.png', N'{gamecode}_hk.png', N'{gamecode}_en.png', N'{gamecode}_{(isThExist.Checked ? "th" : "en")}.png', N'{gamecode}_{(isViExist.Checked ? "vi" : "en")}.png', N'{gamecode}_{(isIdExist.Checked ? "id" : "en")}.png', N'{gamecode}_{(isEsExist.Checked ? "es" : "en")}.png', N'{gamecode}_{(isPtExist.Checked ? "pt" : "en")}.png'" : "N'', N'', N'', N'', N'', N'', N'', N''")}";
-                    string baseStr = $@"INSERT INTO [dbo].[t_game] ([gametype], [gamekind], [device], [platform], [gamecategory], [gamecode], [reportgamecode], [category], [gamename], [gamename_hk], [gamename_en], [gamename_th], [gamename_vi], [gamename_id], [gamename_es], [gamename_pt], [image], [image_hk], [image_en], [image_th], [image_vi], [image_id], [image_es], [image_pt], [seq], [status], [cdate], [remark], [noRebate], [link], [DataVersion]) VALUES ('{gametype.Text}', '{gamekind.Text}', '{device.Text}', '{platform.Text}', '{gamekind.Text}', '{gamecode}', '{gamecode}', '{gamekind.Text}', N'{cn}', N'{hk}', N'{en}', N'{th}', N'{vi}', N'{id}', N'{es}', N'{pt}', {imageSQL},";
-
+                    string gamecode = CheckNameIfHaveSingleQuote(worksheet.Cells[row, 1].Text), 
+                        cn = CheckNameIfHaveSingleQuote(worksheet.Cells[row, 2].Text), 
+                        hk = CheckNameIfHaveSingleQuote(worksheet.Cells[row, 3].Text),
+                        en = CheckNameIfHaveSingleQuote(worksheet.Cells[row, 4].Text),
+                        th = CheckNameIfHaveSingleQuote(worksheet.Cells[row, 5].Text),
+                        vi = CheckNameIfHaveSingleQuote(worksheet.Cells[row, 6].Text),
+                        id = CheckNameIfHaveSingleQuote(worksheet.Cells[row, 7].Text),
+                        es = CheckNameIfHaveSingleQuote(worksheet.Cells[row, 8].Text),
+                        pt = CheckNameIfHaveSingleQuote(worksheet.Cells[row, 9].Text);
+                    //string imageSQL = $"{(isImageExist.Checked ? $"N'{gamecode}_cn.png', N'{gamecode}_hk.png', N'{gamecode}_en.png', N'{gamecode}_{(isThExist.Checked ? "th" : "en")}.png', N'{gamecode}_{(isViExist.Checked ? "vi" : "en")}.png', N'{gamecode}_{(isIdExist.Checked ? "id" : "en")}.png', N'{gamecode}_{(isEsExist.Checked ? "es" : "en")}.png', N'{gamecode}_{(isPtExist.Checked ? "pt" : "en")}.png'" : "N'', N'', N'', N'', N'', N'', N'', N''")}";
+                    string imageSQL = $"{(isImageExist.Checked ? $"N'{gamecode}_cn.png', N'{gamecode}_cn.png', N'{gamecode}_en.png', N'{gamecode}_en.png', N'{gamecode}_en.png', N'{gamecode}_en.png', N'{gamecode}_en.png', N'{gamecode}_en.png'" : "N'', N'', N'', N'', N'', N'', N'', N''")}";
+                    string baseStr = $@"INSERT INTO [dbo].[t_game] ([gametype], [gamekind], [device], [platform], [gamecategory], [gamecode], [reportgamecode], [category], [gamename], [gamename_hk], [gamename_en], [gamename_th], [gamename_vi], [gamename_id], [gamename_es], [gamename_pt], [image], [image_hk], [image_en], [image_th], [image_vi], [image_id], [image_es], [image_pt], [seq], [status], [cdate], [remark], [noRebate], [link], [DataVersion]) VALUES ('{gametype.Text}', '{gamekind.Text}', '{device.Text}', {(platform.Text.ToLower() == "null" ? "NULL" : $"'{platform.Text}'")}, '{gamekind.Text}', '{gamecode}', '{gamecode}', '{gamekind.Text}', N'{cn}', N'{hk}', N'{en}', N'{th}', N'{vi}', N'{id}', N'{es}', N'{pt}', {imageSQL},";
                     baseStr += $"{row}, 'Y', GETDATE(), NULL, '0', '', 0);\n";
                     result += baseStr;
                 }
 
                 resultBox.Text = result;
+            }
+        }
+
+        private string CheckNameIfHaveSingleQuote(string gameName)
+        {
+            if (gameName.Contains("'"))
+            {
+                int singleQuotePosition = gameName.IndexOf("'", StringComparison.OrdinalIgnoreCase);
+                return gameName.Insert(singleQuotePosition, "'");
+            }
+            else
+            {
+                return gameName;
             }
         }
     }

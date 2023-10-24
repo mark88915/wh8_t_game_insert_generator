@@ -1,0 +1,2 @@
+# wh8_t_game_insert_generator
+RD群的人看得懂怎麼用就好
